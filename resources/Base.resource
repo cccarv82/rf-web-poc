@@ -5,9 +5,13 @@ Library                       Browser
 Library                       ScreenCapLibrary
 Library                       factories/Users.py
 Library                       Utils.py
+Library                       DatabaseLibrary
 Resource                      actions/_SharedActions.resource
 Resource                      actions/LoginActions.resource
 Resource                      actions/AlunosActions.resource
+Resource                      ${EXECDIR}/tasks/dbconnect.robot
+Resource                      ${EXECDIR}/tasks/dbcleaner.robot
+Resource                      ${EXECDIR}/tasks/dbseeder.robot
 
 
 *** Variables ***

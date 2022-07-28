@@ -9,7 +9,7 @@ robotidy \
         -c AlignVariablesSection:enabled=True:min_width=30 \
         -c IndentNestedKeywords:enabled=True \
         -c OrderTags:enabled=True \
-        tests resources
+        tests resources tasks
 
 # Criação do arquivo txt vazio para utilização pelo Robocop.
 # Foi visto que ao implementar um pipeline, ocorria um erro no comando do robocop que não encontrava o arquivo, este comando resolve isso.
@@ -25,7 +25,7 @@ pabot \
     -d reports/ \
     -v BROWSER:chromium \
     -v HEADLESS:True \
-    tests/
+    tests
 
 # Fix #1 para o relatório conter os screenshots quando executado em paralelo
 mkdir reports/browser

@@ -25,3 +25,23 @@ Novo Aluno
     Submit Student Registration
     Toaster Message Should Be                         Aluno cadastrado com sucesso.
     Verify If Student Appears                         ${student}
+
+Cadastro Duplicado De Aluno
+    [Documentation]    Dado que realizo login no sistema como administrador
+    ...    E acesso a área de Alunos
+    ...    Quando acesso a funcionalidade de Cadastrar aluno
+    ...    E envio o formulário com os dados a serem cadastrados utilizando um email já cadastrado
+    ...    Então o sistema deve bloquear o registro
+    ...    E apresentar mensagem informando o motivo
+    [Tags]                                            negativo
+    ${student}                                        Factory Users
+    ...                                               student
+    # Add Student Data    ${student}
+    Insert Student Into DB                            ${student}
+
+    Access Student Registration
+    Fill Student Data                                 ${student}
+    Submit Student Registration
+    Toaster Message Should Be                         Email já existe no sistema.
+
+    [Teardown]                                        Thinking Before Take A Screenshot                 1s

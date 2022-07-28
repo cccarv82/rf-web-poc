@@ -48,3 +48,12 @@ Verify If Student Appears
     Wait For Elements State                           text=${student}[name]
     Wait For Elements State                           text=${student}[email]
     Wait For Elements State                           text=${student}[age]
+
+Add Student Data
+    [Documentation]    Keyword responsável por inserir um aluno no sistema
+    ...    Observação: Esta keyword não valida a inserção do aluno!!!
+    [Arguments]                                       ${student}
+    Access Student Registration
+    Fill Student Data                                 ${student}
+    Submit Student Registration
+    Go To                                             ${BASE_URL}
