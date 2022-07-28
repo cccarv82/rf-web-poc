@@ -1,0 +1,6 @@
+reports
+playwright-log.txt
+__pycache__
+.vscode
+.pabotsuitenames
+.DS_Store

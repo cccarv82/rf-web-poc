@@ -1,0 +1,10 @@
+Faker>=13.15.0
+psycopg2>=2.9.3
+robotframework>=5.0.1
+robotframework-browser>=13.3.0
+robotframework-crypto>=0.3.0
+robotframework-metrics>=3.3.3
+robotframework-pabot>=2.5.4
+robotframework-robocop>=2.2.0
+robotframework-screencaplibrary>=1.6.0
+robotframework-tidy>=3.0
