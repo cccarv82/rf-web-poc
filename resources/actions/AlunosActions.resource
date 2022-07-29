@@ -10,12 +10,14 @@ ${EMAIL_FIELD}                id=email
 ${AGE_FIELD}                  id=age
 ${WEIGHT_FIELD}               id=weight
 ${FEET_TALL_FIELD}            id=feet_tall
+${SEARCH_STUDENT_FIELD}       input[placeholder="Buscar aluno"]
 
 
 *** Keywords ***
 Access Student Registration
     [Documentation]    Keyword para acessar o formulário que deve ser
     ...    preenchido para cadastrar alunos
+    Go To                                             ${BASE_URL}
     Click                                             a[href="/alunos"]
     Wait For Elements State
     ...                                               h1 >> text=Gestão de Alunos
@@ -52,9 +54,7 @@ Submit Student Registration
 Verify If Student Appears
     [Documentation]    Verifica se os dados cadastrados aparecem na tabela de alunos cadastrados
     [Arguments]                                       ${student}
-    Fill Text
-    ...                                               input[placeholder="Buscar aluno"]
-    ...                                               ${student}[name]
+    Search For Student                                ${student}[name]
     Wait For Elements State                           text=${student}[name]
     Wait For Elements State                           text=${student}[email]
     Wait For Elements State                           text=${student}[age]
@@ -66,4 +66,19 @@ Add Student Data
     Access Student Registration
     Fill Student Data                                 ${student}
     Submit Student Registration
-    Go To                                             ${BASE_URL}
+
+Search For Student
+    [Documentation]    Keyword que realiza a busca de um aluno
+    [Arguments]                                       ${student}
+
+    Fill Text
+    ...                                               ${SEARCH_STUDENT_FIELD}
+    ...                                               ${student}[name]
+    Wait For Elements State                           text=${student}[name]
+
+Delete User
+    [Documentation]    Deleta um estudante a partir do frontend do sistema
+    Click                                             id=trash >> text=Apagar
+    Wait For Elements State                           text=Você está certo disso?
+    Click                                             button >> text=SIM, pode apagar!
+    Toaster Message Should Be                         Aluno removido com sucesso.

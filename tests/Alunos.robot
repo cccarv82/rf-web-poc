@@ -36,8 +36,8 @@ Cenario: Cadastro duplicado de emails
     [Tags]                                            negativo
     ${student}                                        Factory Users
     ...                                               student
-    # Add Student Data    ${student}
-    Insert Student Into DB                            ${student}
+    Add Student Data                                  ${student}
+    # Insert Student Into DB    ${student}
     Access Student Registration
     Fill Student Data                                 ${student}
     Submit Student Registration
@@ -96,13 +96,25 @@ Cenario: Abaixo de 14 anos
     ...    E envio o formulário com os dados a serem cadastrados informando a idade abaixo de 14 anos
     ...    Então o sistema deve bloquear o registro
     ...    E apresentar mensagem informando o motivo
-    [Tags]                                            negativo                                          teste
+    [Tags]                                            negativo
     ${student_below_14}                               Factory Users
     ...                                               student_below_14
     Access Student Registration
     Fill Student Data                                 ${student_below_14}
     Submit Student Registration
     Alert Text Should Be                              A idade deve ser maior ou igual 14 anos
+
+Cenario: Remover aluno
+    [Documentation]    Dado que realizo login no sistema como administrador
+    ...    E acesso a área de Alunos
+    ...    Quando aciono a funcionalidade de Apagar aluno
+    ...    Então o sistema deve remover o registro do sistema
+    [Tags]                                            teste
+    ${student}                                        Factory Users
+    ...                                               student
+    Add Student Data                                  ${student}
+    Search For Student                                ${student}
+    Delete User
 
 
 *** Keywords ***

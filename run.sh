@@ -27,6 +27,7 @@ pabot \
     -d reports/ \
     -v BROWSER:chromium \
     -v HEADLESS:True \
+    -i teste \
     tests
 
 # Fix #1 para o relatório conter os screenshots quando executado em paralelo
