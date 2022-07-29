@@ -81,11 +81,11 @@ Search For Student
 
 Delete User
     [Documentation]    Deleta um estudante a partir do frontend do sistema
-    [Arguments]                                       ${decision}
+    [Arguments]                                       ${delete}
     Click                                             id=trash >> text=Apagar
     Wait For Elements State                           text=Você está certo disso?
 
-    IF    ${decision} == True
+    IF    ${delete} == True
         Click                                             button >> text=SIM, pode apagar!
         Toaster Message Should Be                         Aluno removido com sucesso.
     ELSE

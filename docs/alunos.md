@@ -44,7 +44,7 @@ Quando aciono a funcionalidade de Apagar aluno
 E confirmo a exclusão
 Então o sistema deve remover o registro do sistema
 
-##### Desistir da exclusão do aluno
+##### Desistir da exclusão do aluno - [x]
 
 Dado que realizo login no sistema como administrador
 E acesso a área de Alunos
