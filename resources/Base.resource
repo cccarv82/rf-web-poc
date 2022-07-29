@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation                 Arquivo base do projeto
 
+Library                       Collections
 Library                       Browser
 Library                       ScreenCapLibrary
 Library                       factories/Users.py
@@ -9,9 +10,9 @@ Library                       DatabaseLibrary
 Resource                      actions/_SharedActions.resource
 Resource                      actions/LoginActions.resource
 Resource                      actions/AlunosActions.resource
-Resource                      ${EXECDIR}/tasks/dbconnect.robot
+Resource                      ${EXECDIR}/tasks/dbconnect.resource
 Resource                      ${EXECDIR}/tasks/dbcleaner.robot
-Resource                      ${EXECDIR}/tasks/dbseeder.robot
+Resource                      ${EXECDIR}/tasks/dbseeder.resource
 
 
 *** Variables ***

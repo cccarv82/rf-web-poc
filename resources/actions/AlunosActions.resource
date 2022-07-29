@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation                 Actions refentes aos testes de Alunos
 
+Resource                      ${EXECDIR}/resources/Base.resource
+
 
 *** Keywords ***
 Access Student Registration

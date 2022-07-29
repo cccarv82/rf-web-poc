@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation                 Task que realiza a conexão ao banco de dados
 
-Resource                      ${EXECDIR}/resources/Base.resource
+Library                       DatabaseLibrary
 
 
 *** Keywords ***
-Connect To Base
+Connect To DB
     [Documentation]    Realiza a conexão ao banco de dados
     Connect To Database
     ...                                               psycopg2

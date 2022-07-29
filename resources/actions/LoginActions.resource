@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation                 Actions para realizar o preenchimento dos campos de login e submit do formulário
 
+Resource                      ${EXECDIR}/resources/Base.resource
+
 
 *** Keywords ***
 Login With
@@ -24,12 +26,3 @@ User Should Be Logged In
     ...                                               aside strong
     ...                                               should be
     ...                                               ${user_name}
-
-Alert Text Should Be
-    [Documentation]    Valida as mensagens de alerta apresentadas pelo sistema
-    [Arguments]                                       ${expected_alert}
-
-    Wait For Elements State
-    ...                                               form span >> text=${expected_alert}
-    ...                                               visible
-    ...                                               5s
