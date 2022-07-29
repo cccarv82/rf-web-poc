@@ -30,13 +30,13 @@ Get Alerts
     ...                                               xpath=(//form//span)[${index}]
     RETURN                                            ${alert}
 
-Check Numeric Fields
+Check Type Fields
     [Documentation]    Keyword para validar se os campos numéricos estão
     ...    corretamente configurados com o type number
-    [Arguments]                                       ${element}
+    [Arguments]                                       ${element}                                        ${type}
     ${attribute}                                      Get Attribute
     ...                                               ${element}
     ...                                               type
     Should Be Equal
     ...                                               ${attribute}
-    ...                                               number
+    ...                                               ${type}

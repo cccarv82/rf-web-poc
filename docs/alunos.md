@@ -21,8 +21,17 @@ E envio o formulário com os dados a serem cadastrados utilizando um email já c
 Então o sistema deve bloquear o registro
 E apresentar mensagem informando o motivo
 
-##### Validar os campos obrigatórios - [ ]
+##### Validar os campos obrigatórios - [x]
 
 Dado que acesso o formulário de cadastro de aluno
 Quando tento submeter o formulário sem preencher as informações obrigatórias
 Então o sistema deve apresentar mensagem informando que o campo é obrigatório
+
+##### Bloquear cadastro para menor de 14 anos - [ ]
+
+Dado que realizo login no sistema como administrador
+E acesso a área de Alunos
+Quando acesso a funcionalidade de Cadastrar aluno
+E envio o formulário com os dados a serem cadastrados informando a idade abaixo de 14 anos
+Então o sistema deve bloquear o registro
+E apresentar mensagem informando o motivo

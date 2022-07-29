@@ -15,9 +15,11 @@ robotidy \
 # Foi visto que ao implementar um pipeline, ocorria um erro no comando do robocop que não encontrava o arquivo, este comando resolve isso.
 touch reports/robocop.txt
 robocop \
+        --configure too-long-test-case:max_len:60 \
+        --configure consecutive-empty-lines:empty_lines:2 \
         --report all \
         --output reports/robocop.txt \
-        tests/
+        tests resources
 
 # Execução em paralelo
 pabot \

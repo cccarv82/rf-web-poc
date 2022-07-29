@@ -4,6 +4,14 @@ Documentation                 Actions refentes aos testes de Alunos
 Resource                      ${EXECDIR}/resources/Base.resource
 
 
+*** Variables ***
+${NAME_FIELD}                 id=name
+${EMAIL_FIELD}                id=email
+${AGE_FIELD}                  id=age
+${WEIGHT_FIELD}               id=weight
+${FEET_TALL_FIELD}            id=feet_tall
+
+
 *** Keywords ***
 Access Student Registration
     [Documentation]    Keyword para acessar o formulário que deve ser
@@ -22,19 +30,19 @@ Fill Student Data
     [Documentation]    Keyword para preencher os dados do aluno a ser cadastrado
     [Arguments]                                       ${student}
     Fill Text
-    ...                                               id=name
+    ...                                               ${NAME_FIELD}
     ...                                               ${student}[name]
     Fill Text
-    ...                                               id=email
+    ...                                               ${EMAIL_FIELD}
     ...                                               ${student}[email]
     Fill Text
-    ...                                               id=age
+    ...                                               ${AGE_FIELD}
     ...                                               ${student}[age]
     Fill Text
-    ...                                               id=weight
+    ...                                               ${WEIGHT_FIELD}
     ...                                               ${student}[weight]
     Fill Text
-    ...                                               id=feet_tall
+    ...                                               ${FEET_TALL_FIELD}
     ...                                               ${student}[feet_tall]
 
 Submit Student Registration
