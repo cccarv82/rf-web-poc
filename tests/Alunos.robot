@@ -108,12 +108,25 @@ Cenario: Remover aluno
     [Documentation]    Dado que realizo login no sistema como administrador
     ...    E acesso a área de Alunos
     ...    Quando aciono a funcionalidade de Apagar aluno
+    ...    E confirmo a exclusão
     ...    Então o sistema deve remover o registro do sistema
     ${student}                                        Factory Users
     ...                                               student
     Add Student Data                                  ${student}
     Search For Student                                ${student}
-    Delete User
+    Delete User                                       True
+
+Cenario: Desistir da exclusão
+    [Documentation]    Dado que realizo login no sistema como administrador
+    ...    E acesso a área de Alunos
+    ...    Quando aciono a funcionalidade de Apagar aluno
+    ...    E desisto da exclusão
+    ...    Então deve manter o registro do estudante
+    ${student}    Factory Users
+    ...    student
+    Add Student Data                                  ${student}
+    Search For Student                                ${student}
+    Delete User                                       False
 
 
 *** Keywords ***

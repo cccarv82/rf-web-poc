@@ -41,4 +41,13 @@ E apresentar mensagem informando o motivo
 Dado que realizo login no sistema como administrador
 E acesso a área de Alunos
 Quando aciono a funcionalidade de Apagar aluno
+E confirmo a exclusão
 Então o sistema deve remover o registro do sistema
+
+##### Desistir da exclusão do aluno
+
+Dado que realizo login no sistema como administrador
+E acesso a área de Alunos
+Quando aciono a funcionalidade de Apagar aluno
+E desisto da exclusão
+Então deve manter o registro do estudante

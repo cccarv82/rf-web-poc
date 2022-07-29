@@ -75,13 +75,19 @@ Search For Student
     ...                                               input[placeholder="Buscar aluno"]
     ...                                               ${student}[name]
     Wait For Elements State
-    ...                                               text=${student}[name]
+    ...                                               text=${student}[email]
     ...                                               visible
     ...                                               5s
 
 Delete User
     [Documentation]    Deleta um estudante a partir do frontend do sistema
+    [Arguments]                                       ${decision}
     Click                                             id=trash >> text=Apagar
     Wait For Elements State                           text=Você está certo disso?
-    Click                                             button >> text=SIM, pode apagar!
-    Toaster Message Should Be                         Aluno removido com sucesso.
+
+    IF    ${decision} == True
+        Click                                             button >> text=SIM, pode apagar!
+        Toaster Message Should Be                         Aluno removido com sucesso.
+    ELSE
+        Click                                             button >> text=NÃO
+    END
