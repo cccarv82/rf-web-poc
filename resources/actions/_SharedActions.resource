@@ -28,4 +28,15 @@ Get Alerts
     [Arguments]                                       ${index}
     ${alert}                                          Get Text
     ...                                               xpath=(//form//span)[${index}]
-    RETURN                                          ${alert}
+    RETURN                                            ${alert}
+
+Check Numeric Fields
+    [Documentation]    Keyword para validar se os campos numéricos estão
+    ...    corretamente configurados com o type number
+    [Arguments]                                       ${element}
+    ${attribute}                                      Get Attribute
+    ...                                               ${element}
+    ...                                               type
+    Should Be Equal
+    ...                                               ${attribute}
+    ...                                               number

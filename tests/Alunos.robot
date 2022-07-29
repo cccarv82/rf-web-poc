@@ -49,7 +49,7 @@ Campos obrigatórios
     [Documentation]    Dado que acesso o formulário de cadastro de aluno
     ...    Quando tento submeter o formulário sem preencher as informações obrigatórias
     ...    Então o sistema deve apresentar mensagem informando que o campo é obrigatório
-    [Tags]                                            negativo                                          teste
+    [Tags]                                            negativo
     @{required_alerts}                                Set Variable
     ...                                               Nome é obrigatório
     ...                                               O e-mail é obrigatório
@@ -62,12 +62,31 @@ Campos obrigatórios
     Submit Student Registration
 
     FOR    ${index}    IN RANGE    1    6
-        ${alert}                                          Get Alerts                                        ${index}
+        ${alert}                                          Get Alerts
+        ...                                               ${index}
         Append To List
         ...                                               ${system_required_alerts}
         ...                                               ${alert}
     END
 
     Lists Should Be Equal
-    ...    ${required_alerts}
-    ...    ${system_required_alerts}
+    ...                                               ${required_alerts}
+    ...                                               ${system_required_alerts}
+
+Campos numericos
+    [Documentation]    Valida se os campos numéricos estão configurados
+    ...    corretamente para aceitar apenas números
+    [Tags]                                            smoke                                             teste
+    [Template]                                        Check Numeric Fields On Student Form
+    input[name=age]
+    input[name=weight]
+    input[name=feet_tall]
+
+
+*** Keywords ***
+Check Numeric Fields On Student Form
+    [Documentation]    Template para validação de campos numéricos
+    [Arguments]                                       ${element}
+    Go To Initial Page
+    Access Student Registration
+    Check Numeric Fields                              ${element}
