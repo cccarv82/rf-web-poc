@@ -109,7 +109,6 @@ Cenario: Remover aluno
     ...    E acesso a área de Alunos
     ...    Quando aciono a funcionalidade de Apagar aluno
     ...    Então o sistema deve remover o registro do sistema
-    [Tags]                                            teste
     ${student}                                        Factory Users
     ...                                               student
     Add Student Data                                  ${student}

@@ -54,7 +54,7 @@ Submit Student Registration
 Verify If Student Appears
     [Documentation]    Verifica se os dados cadastrados aparecem na tabela de alunos cadastrados
     [Arguments]                                       ${student}
-    Search For Student                                ${student}[name]
+    Search For Student                                ${student}
     Wait For Elements State                           text=${student}[name]
     Wait For Elements State                           text=${student}[email]
     Wait For Elements State                           text=${student}[age]
@@ -72,9 +72,12 @@ Search For Student
     [Arguments]                                       ${student}
 
     Fill Text
-    ...                                               ${SEARCH_STUDENT_FIELD}
+    ...                                               input[placeholder="Buscar aluno"]
     ...                                               ${student}[name]
-    Wait For Elements State                           text=${student}[name]
+    Wait For Elements State
+    ...                                               text=${student}[name]
+    ...                                               visible
+    ...                                               5s
 
 Delete User
     [Documentation]    Deleta um estudante a partir do frontend do sistema
