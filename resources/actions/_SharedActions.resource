@@ -40,3 +40,14 @@ Check Type Fields
     Should Be Equal
     ...                                               ${attribute}
     ...                                               ${type}
+
+Search Should Return No Data
+    [Documentation]    Valida que a busca realizada não encontrou registros
+    Wait For Elements State
+    ...                                               text=Nenhum registro encontrado.
+    ...                                               visible
+    ...                                               5s
+    Wait For Elements State
+    ...                                               table
+    ...                                               detached
+    ...                                               5s

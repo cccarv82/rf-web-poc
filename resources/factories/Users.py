@@ -11,7 +11,7 @@ def factory_users(type):
         'student': {
             'name': fake.name(),
             'email': fake.email(),
-            'age': fake.pyint(min_value=18, max_value=100),
+            'age': fake.pyint(min_value=14, max_value=100),
             'weight': fake.pyfloat(right_digits=1, min_value=30, max_value=400),
             'feet_tall': fake.pyfloat(right_digits=2, min_value=1, max_value=3)
         },
@@ -19,6 +19,13 @@ def factory_users(type):
             'name': fake.name(),
             'email': fake.email(),
             'age': fake.pyint(max_value=13),
+            'weight': fake.pyfloat(right_digits=1, min_value=30, max_value=400),
+            'feet_tall': fake.pyfloat(right_digits=2, min_value=1, max_value=3)
+        },
+        'student_search': {
+            'name': 'Student Search',
+            'email': 'student@search.com',
+            'age': fake.pyint(min_value=14, max_value=100),
             'weight': fake.pyfloat(right_digits=1, min_value=30, max_value=400),
             'feet_tall': fake.pyfloat(right_digits=2, min_value=1, max_value=3)
         }

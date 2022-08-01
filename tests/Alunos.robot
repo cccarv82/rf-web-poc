@@ -16,15 +16,14 @@ Cenario: Novo aluno
     ...    Quando acesso a funcionalidade de Cadastrar aluno
     ...    E envio o formulário com os dados a serem cadastrados
     ...    Então o sistema registra o novo aluno com sucesso
-    [Tags]                                            smoke
 
     ${student}                                        Factory Users
     ...                                               student
     Access Student Registration
-    Fill Student Data                                 ${student}
+    Fill Student Data                             ${student}
     Submit Student Registration
-    Toaster Message Should Be                         Aluno cadastrado com sucesso.
-    Verify If Student Appears                         ${student}
+    Toaster Message Should Be                    Aluno cadastrado com sucesso.
+    Verify If Student Appears                     ${student}
 
 Cenario: Cadastro duplicado de emails
     [Documentation]    Dado que realizo login no sistema como administrador
@@ -36,8 +35,8 @@ Cenario: Cadastro duplicado de emails
     [Tags]                                            negativo
     ${student}                                        Factory Users
     ...                                               student
-    Add Student Data                                  ${student}
-    # Insert Student Into DB    ${student}
+    # Add Student Data    ${student}
+    Insert Student Into DB                            ${student}
     Access Student Registration
     Fill Student Data                                 ${student}
     Submit Student Registration
@@ -113,7 +112,8 @@ Cenario: Remover aluno
     ${student}                                        Factory Users
     ...                                               student
     Add Student Data                                  ${student}
-    Search For Student                                ${student}
+    Search For Student                                ${student}[name]
+    Validate Student Search Result                    ${student}[email]
     Delete User                                       True
 
 Cenario: Desistir da exclusão
@@ -122,11 +122,42 @@ Cenario: Desistir da exclusão
     ...    Quando aciono a funcionalidade de Apagar aluno
     ...    E desisto da exclusão
     ...    Então deve manter o registro do estudante
-    ${student}    Factory Users
-    ...    student
+    ${student}                                        Factory Users
+    ...                                               student
     Add Student Data                                  ${student}
-    Search For Student                                ${student}
+    Search For Student                                ${student}[name]
+    Validate Student Search Result                    ${student}[email]
     Delete User                                       False
+
+Cenario: Pesquisar por aluno
+    [Documentation]    Dado que realizo login no sistema como administrador
+    ...    E acesso a área de Alunos
+    ...    Quando informo um dado do aluno no campo de pesquisa
+    ...    Então o sistema deve apresentar o resultado de acordo com o dado informado
+    ${student_search}                                 Factory Users
+    ...                                               student_search
+    Delete Student In DB                              ${student_search}[name]
+    Add Student Data                                  ${student_search}
+    Search For Student                                ${student_search}[name]
+    Validate Student Search Result                    ${student_search}[email]
+
+Cenario: Nenhum registro encontrado
+    [Documentation]    Cenário que pesquisa por um termo não encontrado na área de alunos
+    ${student}                                        Set Variable
+    ...                                               RegistroInexistente
+    Delete Student In DB                              ${student}
+    Access Student Page
+    Search For Student                                ${student}
+    Search Should Return No Data
+
+Cenario: Pesquisa por termo parcial
+    [Documentation]    Cenário que pesquisa por termo incompleto
+    ${student_search}                                 Factory Users
+    ...                                               student_search
+    Delete Student In DB                              ${student_search}[name]
+    Add Student Data                                  ${student_search}
+    Search For Student                                dent Se
+    Validate Student Search Result                    ${student_search}[email]
 
 
 *** Keywords ***

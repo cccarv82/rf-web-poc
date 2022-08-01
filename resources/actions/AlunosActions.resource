@@ -14,15 +14,19 @@ ${SEARCH_STUDENT_FIELD}       input[placeholder="Buscar aluno"]
 
 
 *** Keywords ***
-Access Student Registration
-    [Documentation]    Keyword para acessar o formulário que deve ser
-    ...    preenchido para cadastrar alunos
+Access Student Page
+    [Documentation]    Acessa a página de Alunos
     Go To                                             ${BASE_URL}
     Click                                             a[href="/alunos"]
     Wait For Elements State
     ...                                               h1 >> text=Gestão de Alunos
     ...                                               visible
     ...                                               5s
+
+Access Student Registration
+    [Documentation]    Keyword para acessar o formulário que deve ser
+    ...    preenchido para cadastrar alunos
+    Access Student Page
     Click                                             a[href="/alunos/new"]
     Wait For Elements State                           id=formStudent
     ...                                               visible
@@ -54,10 +58,19 @@ Submit Student Registration
 Verify If Student Appears
     [Documentation]    Verifica se os dados cadastrados aparecem na tabela de alunos cadastrados
     [Arguments]                                       ${student}
-    Search For Student                                ${student}
-    Wait For Elements State                           text=${student}[name]
-    Wait For Elements State                           text=${student}[email]
-    Wait For Elements State                           text=${student}[age]
+    Search For Student                                ${student}[name]
+    Wait For Elements State
+    ...                                               text=${student}[name]
+    ...                                               visible
+    ...                                               5s
+    Wait For Elements State
+    ...                                               text=${student}[email]
+    ...                                               visible
+    ...                                               5s
+    Wait For Elements State
+    ...                                               text=${student}[age]
+    ...                                               visible
+    ...                                               5s
 
 Add Student Data
     [Documentation]    Keyword responsável por inserir um aluno no sistema
@@ -69,13 +82,26 @@ Add Student Data
 
 Search For Student
     [Documentation]    Keyword que realiza a busca de um aluno
-    [Arguments]                                       ${student}
+    [Arguments]                                       ${student_name}
 
     Fill Text
     ...                                               input[placeholder="Buscar aluno"]
-    ...                                               ${student}[name]
+    ...                                               ${student_name}
+
+Validate Student Search Result
+    [Documentation]    Valida a busca por estudante
+    [Tags]                                            teste
+    [Arguments]                                       ${student_email}
     Wait For Elements State
-    ...                                               text=${student}[email]
+    ...                                               table tbody tr >> text=${student_email}
+    ...                                               visible
+    ...                                               5s
+    Wait For Elements State
+    ...                                               .total >> text=Total: 1
+    ...                                               visible
+    ...                                               5s
+    Wait For Elements State
+    ...                                               .items >> text=Página: 1/1
     ...                                               visible
     ...                                               5s
 
@@ -83,7 +109,10 @@ Delete User
     [Documentation]    Deleta um estudante a partir do frontend do sistema
     [Arguments]                                       ${delete}
     Click                                             id=trash >> text=Apagar
-    Wait For Elements State                           text=Você está certo disso?
+    Wait For Elements State
+    ...                                               text=Você está certo disso?
+    ...                                               visible
+    ...                                               5s
 
     IF    ${delete} == True
         Click                                             button >> text=SIM, pode apagar!

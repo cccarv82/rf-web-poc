@@ -51,3 +51,10 @@ E acesso a área de Alunos
 Quando aciono a funcionalidade de Apagar aluno
 E desisto da exclusão
 Então deve manter o registro do estudante
+
+##### Realizar busca de aluno
+
+Dado que realizo login no sistema como administrador
+E acesso a área de Alunos
+Quando informo um dado do aluno no campo de pesquisa
+Então o sistema deve apresentar o resultado de acordo com o dado informado
