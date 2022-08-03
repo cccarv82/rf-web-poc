@@ -20,10 +20,10 @@ Cenario: Novo aluno
     ${student}                                        Factory Users
     ...                                               student
     Access Student Registration
-    Fill Student Data                             ${student}
+    Fill Student Data                                 ${student}
     Submit Student Registration
-    Toaster Message Should Be                    Aluno cadastrado com sucesso.
-    Verify If Student Appears                     ${student}
+    Toaster Message Should Be                         Aluno cadastrado com sucesso.
+    Verify If Student Appears                         ${student}
 
 Cenario: Cadastro duplicado de emails
     [Documentation]    Dado que realizo login no sistema como administrador
