@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker {
+            image 'python'
+        }
+    }
+
+    stages {
+        stage('Env Preparation') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Browser Lib Preparation') {
+            steps {
+                sh 'rfbrowser init'
+            }
+        }
+        stage('Tests Execution') {
+            steps {
+                sh './run.sh'
+            }
+        }
+    }
+}
