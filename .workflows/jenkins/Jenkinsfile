@@ -6,13 +6,31 @@ pipeline {
     }
 
     stages {
-        stage('Env Preparation') {
+        stage('Node Preparation') {
             steps {
-                sh 'eccho "teste" && pip install -r requirements.txt'
+                sh 'curl -fsSL https://deb.nodesource.com/setup_16.x | bash -'
+                sh 'apt install -y nodejs'
+                sh 'apt install -y xvfb ca-certificates net-tools netcat gnupg2 ffmpeg libgtk-3-0 libgdk-pixbuf2.0-0 libx11-xcb1 libxcb-dri3-0 libxss1 libasound2 libxtst6 libnss3 libxss1 libasound2 libatk-bridge2.0-0 libgtk-2.0-0 libgbm1'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Dependencies Preparation') {
+            steps {
+                sh 'apt-get update'
+                sh 'apt-get install -y xvfb ca-certificates net-tools netcat gnupg ffmpeg libgtk-3-0 libgdk-pixbuf2.0-dev libxcomposite-dev libdbus-glib-1-2 libatk-bridge2.0-0 wget libgbm1 libnss3 libxss1 libasound2'
+                sh 'python -m pip install --upgrade pip'
+                sh 'pip install build'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Browser Lib Preparation') {
+            steps {
+                sh 'rfbrowser init'
             }
         }
         stage('Tests Execution') {
             steps {
+                sh 'chmod +x run.sh'
                 sh './run.sh'
             }
         }
