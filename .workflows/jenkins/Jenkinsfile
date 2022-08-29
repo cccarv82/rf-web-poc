@@ -8,12 +8,7 @@ pipeline {
     stages {
         stage('Env Preparation') {
             steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-        stage('Browser Lib Preparation') {
-            steps {
-                sh 'rfbrowser init'
+                sh 'eccho "teste" && pip install -r requirements.txt'
             }
         }
         stage('Tests Execution') {
