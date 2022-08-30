@@ -33,4 +33,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            robot archiveDirName: 'robot-plugin', logFileName: '**/reports/log.html', otherFiles: '**/reports/**/*.png,**/reports/metrics*.html', outputFileName: '**/reports/output.xml', outputPath: '', overwriteXAxisLabel: '', reportFileName: '**/reports/report.html'
+        }
+    }
+    // Para visualizar html dentro do próprio Jenkins, ir em Gerenciar Jenkins --> Console de script e adicionar a linha abaixo
+    // System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","sandbox allow-scripts; default-src 'none'; img-src 'self' data: ; style-src 'self' 'unsafe-inline' data: ; script-src 'self' 'unsafe-inline' 'unsafe-eval' ;")
 }
