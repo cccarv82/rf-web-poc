@@ -4,10 +4,6 @@ pipeline {
     //     docker { image 'python' }
     // }
 
-    tools {
-        python 'python'
-    }
-
     stages {
         stage('Node Preparation') {
             steps {
