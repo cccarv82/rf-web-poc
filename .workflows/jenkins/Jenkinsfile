@@ -6,9 +6,13 @@ pipeline {
     stages {
         stage('Node Preparation') {
             steps {
-                sh 'sudo curl -fsSL https://deb.nodesource.com/setup_16.x | bash -'
-                sh 'sudo apt install -y nodejs'
-                sh 'sudo apt install -y xvfb ca-certificates net-tools netcat gnupg2 ffmpeg libgtk-3-0 libgdk-pixbuf2.0-0 libx11-xcb1 libxcb-dri3-0 libxss1 libasound2 libxtst6 libnss3 libxss1 libasound2 libatk-bridge2.0-0 libgtk-2.0-0 libgbm1'
+                echo 'Node Preparation #1'
+                sh 'curl -fsSL https://deb.nodesource.com/setup_16.x | bash -'
+                echo 'Node Preparation #2'
+                sh 'apt install -y nodejs'
+                echo 'Node Preparation #3'
+                sh 'apt install -y xvfb ca-certificates net-tools netcat gnupg2 ffmpeg libgtk-3-0 libgdk-pixbuf2.0-0 libx11-xcb1 libxcb-dri3-0 libxss1 libasound2 libxtst6 libnss3 libxss1 libasound2 libatk-bridge2.0-0 libgtk-2.0-0 libgbm1'
+                echo 'Node Preparation #4'
                 sh 'pip install -r requirements.txt'
             }
         }
