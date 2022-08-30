@@ -1,8 +1,11 @@
 pipeline {
-    agent {
-        docker {
-            image 'python'
-        }
+    agent any
+    // agent {
+    //     docker { image 'python' }
+    // }
+
+    tools {
+        python 'python'
     }
 
     stages {
