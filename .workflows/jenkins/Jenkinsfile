@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'python' }
+        docker { image 'nikolaik/python-nodejs:latest' }
     }
 
     stages {
